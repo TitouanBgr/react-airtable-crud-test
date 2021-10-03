@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
 import Airtable from 'airtable';
-import {citrouille} from "./img/citrouille.png";
+// import citrouille from './img/citrouille.png'
+import potageons from './img/Potageons.png'
 // import { EntryForm } from './EntryForm';
 
-
-import Iframe from 'react-iframe'
-
+import Iframe from 'react-iframe';
 
 import Modal from 'react-modal';
 const base = new Airtable({ apiKey: 'keyWEQKiVPAlEteEK' }).base('apppDj8zvQ5FWzaYD');
@@ -24,7 +23,7 @@ class App extends React.Component {
 
     this.listRecords = this.listRecords.bind(this);
     //this.handleOpenModal = this.handleOpenModal.bind(this); // Not needed here, because is binded when passing args
-    this.handleCloseModal = this.handleCloseModal.bind(this);    
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   componentDidMount() {
@@ -34,18 +33,11 @@ class App extends React.Component {
     base('Articles').select({
       view: 'Grid view'
     }).eachPage(
-      (records, fetchNextPage) => { // This function will get called for each page of records.
+      (records, fetchNextPage) => {
         this.setState({
           records
         });
-        console.log(records);
-        /* records.forEach(function(record) {
-          console.log('Retrieved', record.get('Picture'));
-        }); */
-
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.        
+        console.log(records);    
         fetchNextPage();
       }
     );
@@ -56,7 +48,7 @@ class App extends React.Component {
   }
   deleteRecord(recordId, event, listRecords) {
     if (window.confirm("Please confirm delete")) {
-      base('Articles').destroy(recordId, function(err, deletedRecord) {
+      base('Articles').destroy(recordId, function (err, deletedRecord) {
         if (err) {
           console.error(err);
           return;
@@ -67,72 +59,30 @@ class App extends React.Component {
     }
   }
 
-  handleOpenModal (record) {
-    this.setState({ showModal: true , updateRecord: record });
+  handleOpenModal(record) {
+    this.setState({ showModal: true, updateRecord: record });
   }
-  
-  handleCloseModal () {
+
+  handleCloseModal() {
     this.setState({ showModal: false });
   }
 
   render() {
     return (
       <div className="Home">
-        <h3 className="app-heading mb-5 mt-4 fw-bolder">Potageons</h3>
         <div className="Img">
-          <img src={citrouille} alt="citrouille" width="200" height="200" />
+          <img src={potageons} alt="citrouille" width="100%" />
         </div>
-          
-        <h3>Carte des serres</h3>
-          
-          <Iframe url="https://app.miniextensions.com/map-view/L9mPicVrGY0uIkAwQqVS"
+        
+        <h3 className="Title">Carte des serres</h3>
+        <Iframe url="https://app.miniextensions.com/map-view/L9mPicVrGY0uIkAwQqVS"
           width="100%"
           height="700px"
           id="myId"
-          className="myClassname"
+          className="map"
           display="initial"
           position="relative"/>
-          {/* <h3>React Airtable</h3>
-          <h5>Default Base - CRUD records</h5>
 
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title text-muted">Create</h5>
-              <EntryForm listRecords={this.listRecords}/>
-            </div>
-          </div>
-
-          <ul className="list-group">
-            {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>
-              <li key={'entry_' + index} className="list-group-item d-flex">
-                <div className="p-1">{record.get('TitreArticle')}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Emplacement']}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Description']}</div>
-                <div className="p-1">
-                  {record.get('Picture') ? ( record.get('Picture').map((file, i) => 
-                    <a key={'file_' + i} className="badge badge-primary badge-pill" href={file.url} target="_blank" rel="noopener noreferrer" title={file.filename}>attachment</a>
-                    ) ) : ''
-                  }  
-                </div>
-               
-                <div className="p-1"><button className="btn btn-primary btn-sm mb-2" onClick={this.handleOpenModal.bind(this, record)}>Edit</button></div>
-                <Modal 
-                  isOpen={this.state.showModal}
-                  onRequestClose={this.handleCloseModal}
-                >
-                  <button className="btn btn-light btn-sm mb-2" onClick={this.handleCloseModal}>Close Modal</button>
-                  <h5 className="text-muted">Edit</h5>
-                  <EntryForm 
-                    listRecords={this.listRecords} 
-                    record={this.state.updateRecord} 
-                    closeModal={this.handleCloseModal}
-                    />
-                </Modal>
-
-                <div className="p-1"><button className="btn btn-danger btn-sm mb-2" onClick={this.handleDelete.bind(this, record.getId())}>Delete</button></div>
-              </li>) ) : (<p>Loading...</p>)
-            }
-          </ul>       */}
       </div>
     )
   }

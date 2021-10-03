@@ -72,13 +72,26 @@ class Retours extends React.Component {
     return (
       <div>
         <div className="container">
-          <h3>Retours</h3>
+          <h3 className="Title">Retours</h3>
           {/* <h5>Default Base - CRUD records</h5> */}
+
+          <ul className="list-group mb-4 pt-4 box">
+            <div className="list-group-item d-flex">
+              <div className="p-2">Titre</div>
+              <div className="p-2 flex-grow-1"></div>
+              <div className="p-2 flex-grow-1"></div>
+              <div className="p-2 flex-grow-1"></div>
+              <div className="p-2 flex-grow-1">Description</div>
+              <div className="p-2 flex-grow-1"></div>
+              <div className="p-2"></div>
+              <div className="p-2 flex-grow-1"></div>
+            </div>
+          </ul>
 
           <ul className="list-group">
             {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>
               <li key={'entry_' + index} className="list-group-item d-flex">
-                <div className="p-1">{record.get('Titre')}</div>
+                <div className="p-1 flex-grow-1">{record.get('Titre')}</div>
                 <div className="p-1 flex-grow-1">{record.fields['Description']}</div>
 
                 <div className="p-1"><button className="btn btn-danger btn-sm mb-2" onClick={this.handleDelete.bind(this, record.getId())}>Delete</button></div>
