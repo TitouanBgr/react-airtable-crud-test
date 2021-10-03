@@ -2,13 +2,9 @@ import React from 'react';
 import './App.css';
 import Airtable from 'airtable';
 // import { EntryForm } from './EntryForm';
+
 import Modal from 'react-modal';
 const base = new Airtable({ apiKey: 'keyWEQKiVPAlEteEK' }).base('apppDj8zvQ5FWzaYD');
-
-
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { WebView } from 'react-native-webview'
 
 Modal.setAppElement('#root')
 
@@ -78,6 +74,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="container">
+          
           {/* <h3>React Airtable</h3>
           <h5>Default Base - CRUD records</h5>
 

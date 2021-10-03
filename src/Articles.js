@@ -73,8 +73,8 @@ class Articles extends React.Component {
     return (
       <div>
         <div className="container">
-          <h3>React Airtable</h3>
-          <h5>Default Base - CRUD records</h5>
+          <h3>CRUD - Articles</h3>
+          {/* <h5>Default Base - CRUD records</h5> */}
 
           <div className="card">
             <div className="card-body">

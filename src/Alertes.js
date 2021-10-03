@@ -72,8 +72,8 @@ class Alertes extends React.Component {
     return (
       <div>
         <div className="container">
-          <h3>React Airtable</h3>
-          <h5>Default Base - CRUD records</h5>
+          <h3>CRUD - Alertes</h3>
+          {/* <h5>Default Base - CRUD records</h5> */}
 
           <ul className="list-group">
             {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>

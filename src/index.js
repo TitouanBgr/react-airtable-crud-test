@@ -7,16 +7,29 @@ import Articles from './Articles'
 import Alertes from './Alertes'
 import Retours from './Retours'
 import * as serviceWorker from './serviceWorker';
+import {Navbar, Container, Nav} from 'react-bootstrap';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch } from "react-router-dom"
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
     <div className="container">
-      <Link exact to="/">Home</Link>
+    <Navbar bg="dark" variant="dark">
+    <Container>
+    <Navbar.Brand href="/">Accueil</Navbar.Brand>
+    <Nav className="me-auto">
+      <Nav.Link href="/articles">Articles</Nav.Link>
+      <Nav.Link href="/retours">Retours</Nav.Link>
+      <Nav.Link href="/alertes">Alertes</Nav.Link>
+      <Nav.Link href="https://potageons.maxime-gendreau.fr/" target="_blank">Carte</Nav.Link>
+    </Nav>
+    </Container>
+  </Navbar>
+      {/* <Link exact to="/">Home</Link>
+      <Link to={{ pathname: "https://potageons.maxime-gendreau.fr/" }} target="_blank">Map</Link>
       <NavLink exact activeClassName="active" to="/articles">Articles</NavLink>
       <NavLink exact activeClassName="active" to="/alertes">Alertes</NavLink>
-      <NavLink exact activeClassName="active" to="/retours">Retours</NavLink>
+      <NavLink exact activeClassName="active" to="/retours">Retours</NavLink> */}
 
       <Switch>
         <Route exact path="/" component={App}/>
