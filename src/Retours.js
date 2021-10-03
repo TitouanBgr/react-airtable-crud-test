@@ -1,18 +1,12 @@
 import React from 'react';
 import './App.css';
 import Airtable from 'airtable';
-// import { EntryForm } from './EntryForm';
 import Modal from 'react-modal';
 const base = new Airtable({ apiKey: 'keyWEQKiVPAlEteEK' }).base('apppDj8zvQ5FWzaYD');
 
-
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { WebView } from 'react-native-webview'
-
 Modal.setAppElement('#root')
 
-class App extends React.Component {
+class Retours extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +24,7 @@ class App extends React.Component {
     this.listRecords();
   }
   listRecords() {
-    base('Articles').select({
+    base('Retours').select({
       view: 'Grid view'
     }).eachPage(
       (records, fetchNextPage) => { // This function will get called for each page of records.
@@ -55,7 +49,7 @@ class App extends React.Component {
   }
   deleteRecord(recordId, event, listRecords) {
     if (window.confirm("Please confirm delete")) {
-      base('Articles').destroy(recordId, function(err, deletedRecord) {
+      base('Retours').destroy(recordId, function(err, deletedRecord) {
         if (err) {
           console.error(err);
           return;
@@ -78,51 +72,23 @@ class App extends React.Component {
     return (
       <div>
         <div className="container">
-          {/* <h3>React Airtable</h3>
+          <h3>React Airtable</h3>
           <h5>Default Base - CRUD records</h5>
-
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title text-muted">Create</h5>
-              <EntryForm listRecords={this.listRecords}/>
-            </div>
-          </div>
 
           <ul className="list-group">
             {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>
               <li key={'entry_' + index} className="list-group-item d-flex">
-                <div className="p-1">{record.get('TitreArticle')}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Emplacement']}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Description']}</div>
-                <div className="p-1">
-                  {record.get('Picture') ? ( record.get('Picture').map((file, i) => 
-                    <a key={'file_' + i} className="badge badge-primary badge-pill" href={file.url} target="_blank" rel="noopener noreferrer" title={file.filename}>attachment</a>
-                    ) ) : ''
-                  }  
-                </div>
-               
-                <div className="p-1"><button className="btn btn-primary btn-sm mb-2" onClick={this.handleOpenModal.bind(this, record)}>Edit</button></div>
-                <Modal 
-                  isOpen={this.state.showModal}
-                  onRequestClose={this.handleCloseModal}
-                >
-                  <button className="btn btn-light btn-sm mb-2" onClick={this.handleCloseModal}>Close Modal</button>
-                  <h5 className="text-muted">Edit</h5>
-                  <EntryForm 
-                    listRecords={this.listRecords} 
-                    record={this.state.updateRecord} 
-                    closeModal={this.handleCloseModal}
-                    />
-                </Modal>
+                <div className="p-1">{record.get('Titre')}</div>
+                <div className="p-1 flex-grow-1">{record.fields['Type_de_problème']}</div>
 
                 <div className="p-1"><button className="btn btn-danger btn-sm mb-2" onClick={this.handleDelete.bind(this, record.getId())}>Delete</button></div>
               </li>) ) : (<p>Loading...</p>)
             }
-          </ul>       */}
+          </ul>      
         </div>
       </div>
     )
   }
 }
 
-export default App;
+export default Retours;

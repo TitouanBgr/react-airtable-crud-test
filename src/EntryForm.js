@@ -1,14 +1,14 @@
 import React from 'react';
 import Airtable from 'airtable';
-const base = new Airtable({ apiKey: 'XXXXXXXXXX' }).base('XXXXXXXXXX');
+const base = new Airtable({ apiKey: 'keyWEQKiVPAlEteEK' }).base('apppDj8zvQ5FWzaYD');
 
 export class EntryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       // Edit form needs the record data. empty for create form 
-      name: this.props.record ? this.props.record.get('Name') : '',
-      notes: this.props.record  ? this.props.record.get('Notes') : ''
+      name: this.props.record ? this.props.record.get('TitreArticle') : '',
+      notes: this.props.record  ? this.props.record.get('Description') : ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -40,9 +40,9 @@ export class EntryForm extends React.Component {
   }
 
   createRecord() {
-    base('Table 1').create({
-      "Name": this.state.name,
-      "Notes": this.state.notes
+    base('Articles').create({
+      "TitreArticle": this.state.name,
+      "Description": this.state.notes
     }, function(err, record) {
       if (err) {
         console.error(err);
@@ -58,9 +58,9 @@ export class EntryForm extends React.Component {
   }
 
   updateRecord(closeModal, listRecords) {
-    base('Table 1').update(this.props.record.id, {
-        "Name": this.state.name,
-        "Notes": this.state.notes
+    base('Articles').update(this.props.record.id, {
+        "TitreArticle": this.state.name,
+        "Description": this.state.notes
     }, function(err, record) {
         if (err) {
             console.error(err);
@@ -68,7 +68,7 @@ export class EntryForm extends React.Component {
         }
         closeModal();
         listRecords();
-        console.log(record.get('Notes'));
+        console.log(record.get('TitreArticle'));
     });
   }
 
@@ -84,16 +84,16 @@ export class EntryForm extends React.Component {
               value={this.state.name} 
               onChange={this.handleInputChange} 
               className="form-control form-control-sm" />
-          </div>  
+          </div>
           <div className="col form-group">
             <label>Notes</label>
-            <input 
+            <input
               name="notes"
               type="text" 
               value={this.state.notes} 
-              onChange={this.handleInputChange} 
+              onChange={this.handleInputChange}
               className="form-control form-control-sm" />
-          </div>     
+          </div>
           <div className="col form-group">
             <label>&nbsp;</label>
             <input type="submit" value="Save" className="btn btn-success btn-sm mb-2 form-control form-control-sm"/>
