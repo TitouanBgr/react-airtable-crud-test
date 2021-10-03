@@ -72,14 +72,14 @@ class Retours extends React.Component {
     return (
       <div>
         <div className="container">
-          <h3>CRUD - Retours</h3>
+          <h3>Retours</h3>
           {/* <h5>Default Base - CRUD records</h5> */}
 
           <ul className="list-group">
             {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>
               <li key={'entry_' + index} className="list-group-item d-flex">
                 <div className="p-1">{record.get('Titre')}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Type_de_problème']}</div>
+                <div className="p-1 flex-grow-1">{record.fields['Description']}</div>
 
                 <div className="p-1"><button className="btn btn-danger btn-sm mb-2" onClick={this.handleDelete.bind(this, record.getId())}>Delete</button></div>
               </li>) ) : (<p>Loading...</p>)

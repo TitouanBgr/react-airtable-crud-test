@@ -6,9 +6,10 @@ import App from './App';
 import Articles from './Articles'
 import Alertes from './Alertes'
 import Retours from './Retours'
+import Carte from './Carte'
 import * as serviceWorker from './serviceWorker';
 import {Navbar, Container, Nav} from 'react-bootstrap';
-import {BrowserRouter as Router, Route, Link, NavLink, Switch } from "react-router-dom"
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,7 +22,7 @@ ReactDOM.render(
       <Nav.Link href="/articles">Articles</Nav.Link>
       <Nav.Link href="/retours">Retours</Nav.Link>
       <Nav.Link href="/alertes">Alertes</Nav.Link>
-      <Nav.Link href="https://potageons.maxime-gendreau.fr/" target="_blank">Carte</Nav.Link>
+      <Nav.Link href="/carte">Carte</Nav.Link>
     </Nav>
     </Container>
   </Navbar>
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Route exact path="/articles" component={Articles}/>
         <Route exact path="/alertes" component={Alertes}/>
         <Route exact path="/retours" component={Retours}/>
+        <Route exact path="/carte" component={Carte}/>
       </Switch>
     </div>
     </Router>

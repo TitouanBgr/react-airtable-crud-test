@@ -73,7 +73,7 @@ class Articles extends React.Component {
     return (
       <div>
         <div className="container">
-          <h3>CRUD - Articles</h3>
+          <h3>Articles</h3>
           {/* <h5>Default Base - CRUD records</h5> */}
 
           <div className="card">

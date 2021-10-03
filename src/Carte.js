@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Airtable from 'airtable';
 import Modal from 'react-modal';
+import Iframe from 'react-iframe'
 const base = new Airtable({ apiKey: 'keyWEQKiVPAlEteEK' }).base('apppDj8zvQ5FWzaYD');
 
 Modal.setAppElement('#root')
@@ -72,20 +73,15 @@ class Alertes extends React.Component {
     return (
       <div>
         <div className="container">
-          <h3>Alertes</h3>
-          {/* <h5>Default Base - CRUD records</h5> */}
-
-          <ul className="list-group">
-            {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>
-              <li key={'entry_' + index} className="list-group-item d-flex">
-                <div className="p-1">{record.get('Location')}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Type_de_problème']}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Détail_du_problème']}</div>
-
-                <div className="p-1"><button className="btn btn-danger btn-sm mb-2" onClick={this.handleDelete.bind(this, record.getId())}>Delete</button></div>
-              </li>) ) : (<p>Loading...</p>)
-            }
-          </ul>      
+          <h3>Carte des serres</h3>
+          
+          <Iframe url="https://app.miniextensions.com/map-view/L9mPicVrGY0uIkAwQqVS"
+          width="100%"
+          height="700px"
+          id="myId"
+          className="myClassname"
+          display="initial"
+          position="relative"/>
         </div>
       </div>
     )

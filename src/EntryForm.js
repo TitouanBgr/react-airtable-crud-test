@@ -77,7 +77,7 @@ export class EntryForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="row">
           <div className="col form-group">
-            <label>Name</label>
+            <label>Titre</label>
             <input 
               name="name"
               type="text" 
@@ -86,7 +86,7 @@ export class EntryForm extends React.Component {
               className="form-control form-control-sm" />
           </div>
           <div className="col form-group">
-            <label>Notes</label>
+            <label>Description</label>
             <input
               name="notes"
               type="text" 
@@ -96,7 +96,7 @@ export class EntryForm extends React.Component {
           </div>
           <div className="col form-group">
             <label>&nbsp;</label>
-            <input type="submit" value="Save" className="btn btn-success btn-sm mb-2 form-control form-control-sm"/>
+            <input type="submit" value="Enregistrer" className="btn btn-success btn-sm mb-2 form-control form-control-sm"/>
           </div> 
         </div>
       </form>
