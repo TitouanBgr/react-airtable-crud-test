@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Airtable from 'airtable';
 // import citrouille from './img/citrouille.png'
-import potageons from './img/Potageons.png'
+import potageons from './img/Potageons.gif'
 // import { EntryForm } from './EntryForm';
 
 import Iframe from 'react-iframe';
