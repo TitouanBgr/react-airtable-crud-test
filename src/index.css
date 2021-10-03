@@ -1,4 +1,19 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #EDFFE3;
   margin-top: 10px;
+}
+
+.container {
+  background-color: #EDFFE3;
+}
+
+.Home {
+  text-align: center;
+}
+
+
+
+.Img {
+  top: 1000px; left: 250px;
+
 }

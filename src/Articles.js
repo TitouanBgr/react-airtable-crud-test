@@ -78,18 +78,33 @@ class Articles extends React.Component {
 
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title text-muted">Create</h5>
+              <h5 className="card-title text-muted">Publier un article</h5>
               <EntryForm listRecords={this.listRecords}/>
             </div>
           </div>
 
+
+          <ul className="list-group mb-4 pt-4">
+            <div className="list-group-item d-flex">
+              <div className="p-2">Titre</div>
+              <div className="p-2 flex-grow-1"></div>
+              <div className="p-2 flex-grow-1">Emplacement</div>
+              <div className="p-2 flex-grow-1">Description</div>
+              <div className="p-2 flex-grow-1"></div>
+              <div className="p-2"></div>
+              <div className="p-2 flex-grow-1"></div>
+            </div>
+          </ul>
+
+          <div></div>
+
           <ul className="list-group">
             {this.state.records.length > 0 ? ( this.state.records.map((record, index) =>
               <li key={'entry_' + index} className="list-group-item d-flex">
-                <div className="p-1">{record.get('TitreArticle')}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Emplacement']}</div>
-                <div className="p-1 flex-grow-1">{record.fields['Description']}</div>
-                <div className="p-1">
+                <div className="p-4 flex-grow-1">{record.get('TitreArticle')}</div>
+                <div className="p-4 flex-grow-1">{record.fields['Emplacement']}</div>
+                <div className="p-4">{record.fields['Description']}</div>
+                <div className="p-4">
                   {record.get('Picture') ? ( record.get('Picture').map((file, i) => 
                     <a key={'file_' + i} className="badge badge-primary badge-pill" href={file.url} target="_blank" rel="noopener noreferrer" title={file.filename}>attachment</a>
                     ) ) : ''

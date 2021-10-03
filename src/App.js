@@ -1,7 +1,11 @@
 import React from 'react';
 import './App.css';
 import Airtable from 'airtable';
+import {citrouille} from "./img/citrouille.png";
 // import { EntryForm } from './EntryForm';
+
+
+import Iframe from 'react-iframe'
 
 
 import Modal from 'react-modal';
@@ -73,8 +77,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="container">
+      <div className="Home">
+        <h3 className="app-heading mb-5 mt-4 fw-bolder">Potageons</h3>
+        <div className="Img">
+          <img src={citrouille} alt="citrouille" width="200" height="200" />
+        </div>
+          
+        <h3>Carte des serres</h3>
+          
+          <Iframe url="https://app.miniextensions.com/map-view/L9mPicVrGY0uIkAwQqVS"
+          width="100%"
+          height="700px"
+          id="myId"
+          className="myClassname"
+          display="initial"
+          position="relative"/>
           {/* <h3>React Airtable</h3>
           <h5>Default Base - CRUD records</h5>
 
@@ -116,7 +133,6 @@ class App extends React.Component {
               </li>) ) : (<p>Loading...</p>)
             }
           </ul>       */}
-        </div>
       </div>
     )
   }

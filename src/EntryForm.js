@@ -8,7 +8,8 @@ export class EntryForm extends React.Component {
     this.state = {
       // Edit form needs the record data. empty for create form 
       name: this.props.record ? this.props.record.get('TitreArticle') : '',
-      notes: this.props.record  ? this.props.record.get('Description') : ''
+      notes: this.props.record  ? this.props.record.get('Description') : '',
+      emplacement: this.props.record  ? this.props.record.get('Emplacement') : ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -42,7 +43,8 @@ export class EntryForm extends React.Component {
   createRecord() {
     base('Articles').create({
       "TitreArticle": this.state.name,
-      "Description": this.state.notes
+      "Description": this.state.notes,
+      "Emplacement": this.state.emplacement
     }, function(err, record) {
       if (err) {
         console.error(err);
@@ -53,14 +55,16 @@ export class EntryForm extends React.Component {
     this.props.listRecords();
     this.setState({
       name: '',
-      notes: ''
+      notes: '',
+      emplacement: ''
     });
   }
 
   updateRecord(closeModal, listRecords) {
     base('Articles').update(this.props.record.id, {
         "TitreArticle": this.state.name,
-        "Description": this.state.notes
+        "Description": this.state.notes,
+        "Emplacement": this.state.emplacement
     }, function(err, record) {
         if (err) {
             console.error(err);
@@ -86,6 +90,15 @@ export class EntryForm extends React.Component {
               className="form-control form-control-sm" />
           </div>
           <div className="col form-group">
+            <label>Emplacement</label>
+            <input
+              name="emplacement"
+              type="text" 
+              value={this.state.emplacement} 
+              onChange={this.handleInputChange}
+              className="form-control form-control-sm" />
+          </div>
+          <div className="">
             <label>Description</label>
             <input
               name="notes"
